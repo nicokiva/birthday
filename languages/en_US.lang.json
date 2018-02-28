@@ -1,0 +1,11 @@
+{
+    "locale": "en_US",
+    "name":"EN_LANG",
+    "words": {
+        "APP_TITLE" : "Example App",
+        "SETTINGS":"Settings",
+    "EN_LANG": "English",
+    "NL_LANG":"Dutch",
+    "LANGUAGE":"Language"
+    }
+}
