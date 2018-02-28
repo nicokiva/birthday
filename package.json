@@ -1,0 +1,22 @@
+{
+  "name": "birthday",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicokiva/birthday.git"
+  },
+  "author": "Nicolas Kivatinetz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicokiva/birthday/issues"
+  },
+  "homepage": "https://github.com/nicokiva/birthday#readme",
+  "dependencies": {
+    "angular": "^1.6.9"
+  }
+}
