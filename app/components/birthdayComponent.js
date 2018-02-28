@@ -8,12 +8,16 @@ var component = {
 
         self.countries = [];
 
-    	self.data = {
-    		firstname: undefined,
-    		surname: undefined,
-    		country: undefined,
-    		dob: undefined
-    	};
+    	function getDefaultData() {
+    		return {
+	    		firstname: undefined,
+	    		surname: undefined,
+	    		country: undefined,
+	    		dob: undefined
+	    	};
+    	}
+
+    	self.data = getDefaultData();
 
     	self.lastInsertedData = {};
     	self.allInsertedData = [];
@@ -31,14 +35,30 @@ var component = {
 
     	self.add = function() {
     		var last = {};
+
+    		if (self.data && self.data.dob) {
+				self.data.dob = padZeros(self.data.dob.getMonth() + 1) + '/' + padZeros(self.data.dob.getDate()) + '/' + self.data.dob.getFullYear();
+    		}
+
     		angular.copy(self.data, last);
 
     		self.lastInsertedData = last;
     		self.allInsertedData.push(self.lastInsertedData);
+
+
+    		self.data = getDefaultData();
     	}
 
     	self.showMessage = function(d) {
     		self.lastInsertedData = d;
+    	}
+
+    	function padZeros(d) {
+    		if (parseInt(d) >= 10) {
+    			return d;
+    		}
+
+    		return '0' + String(d);
     	}
 
     }

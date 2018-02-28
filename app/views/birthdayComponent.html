@@ -1,5 +1,3 @@
-<span class="title">Intive - FDV Excercise</span>
-
 <section class="input">
 	<div class="form-group">
 		<label for="firstname">Name:</label>
@@ -26,12 +24,12 @@
 	<button type="button" ng-click="$ctrl.add()">Save</button>
 
 
-	<div class="message" ng-show="$ctrl.lastInsertedData.firstname">Hello {{$ctrl.lastInsertedData.firstname}} {{$ctrl.lastInsertedData.surname}} from {{$ctrl.lastInsertedData.country.name}}</span></div>
+	<div class="message" ng-show="$ctrl.lastInsertedData.firstname">Hello {{$ctrl.lastInsertedData.firstname}} {{$ctrl.lastInsertedData.surname}} from {{$ctrl.lastInsertedData.country.name}}. On {{$ctrl.day}} of {{$ctrl.month}} you will have {{$ctrl.years}}.</span></div>
 
 </section>
 
 <section class="list">
-	<table>
+	<table cellspacing="0">
 		<thead>
 			<tr>
 				<th>Name</th>
