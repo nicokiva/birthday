@@ -33,6 +33,10 @@ section.input .form-group select {
   padding: 2px 5px;
   width: 250px;
 }
+section.input .form-group select {
+  height: 48px;
+  width: 264px;
+}
 section.input button {
   background-color: #eeeeee;
   border: solid 2px #9eb4ca;

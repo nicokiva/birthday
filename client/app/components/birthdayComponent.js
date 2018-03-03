@@ -1,7 +1,7 @@
 'use strict'
 
 var component = {
-    templateUrl: '/app/views/birthdayComponent.html',
+    templateUrl: 'client/app/views/birthdayComponent.html',
 
     controller: function ($http, $route, metaService, helperService, $routeParams, $location) {
         var self = this;
@@ -20,7 +20,10 @@ var component = {
         };
         var today = new Date();
 
-        self.meta = metaService;
+        metaService.getCountries()
+            .then(r => {
+                self.countries = r;
+            });
 
         self.day = today.getDate();
         self.month = months[$routeParams.lang][today.getMonth()];

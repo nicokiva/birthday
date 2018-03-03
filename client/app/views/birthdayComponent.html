@@ -13,7 +13,7 @@
 		<div class="form-group" ng-class="$ctrl.errors && $ctrl.errors.country && $ctrl.errors.country.length ? 'has-error' : ''">
 			<label for="country">{{ 'COUNTRY' | translate }}:</label>
 			<select name="country" id="country" ng-model="$ctrl.data.country">
-				<option ng-repeat="option in $ctrl.meta.countries" ng-value="{{option}}">{{option.name}}</option>
+				<option ng-repeat="option in $ctrl.countries" ng-value="{{option}}">{{option.name}}</option>
 			</select>
 		</div>
 

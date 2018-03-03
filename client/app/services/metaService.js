@@ -1,22 +1,27 @@
 'use strict'
 
-function service($http) {
-	var self = this;
+function service($http, $q) {
+    var self = this;
+    
+    self.getCountries = function() {
+        var deferred = $q.defer();
 
-    self.countries = [];
-
-	$http.get('https://restcountries.eu/rest/v2/all')
-        .then(r => {
-            self.countries = r.data.map(c => {
-            	return {
-            		code: c.alpha2Code,
-            		name: c.name
-            	};
+    	$http.get('https://restcountries.eu/rest/v2/all')
+            .then(r => {
+                deferred.resolve(
+                    r.data.map(c => {
+                        return {
+                            code: c.alpha2Code,
+                            name: c.name
+                        }
+                    })
+                );
             });
-        });
 
+        return deferred.promise;
+    }
 }
 
 
 var app = angular.module('app');
-app.service('metaService', ['$http', service]);
+app.service('metaService', ['$http', '$q', service]);

@@ -53,7 +53,7 @@ app.config([
 				redirectTo: '/en'
 			})
 			.when('/:lang/:revisited?', {
-				templateUrl: '/app/views/birthday.html'
+				templateUrl: 'client/app/views/birthday.html'
 			});
 
 	}
