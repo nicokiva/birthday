@@ -3,12 +3,20 @@
 var component = {
     templateUrl: '/app/views/birthdayComponent.html',
 
-    controller: function ($http, $routeParams) {
+    controller: function ($http, $route, metaService, helperService, $routeParams, $location) {
         var self = this;
+
+        self.availableLang = $routeParams.lang.in(['es', 'en', 'pr']);
+
+        var authKey;
+        if ($routeParams.revisited === 'revisited') {
+            authKey = $routeParams.authKey;
+        }
+
         var months = ['January', 'February', 'March', 'April', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         var today = new Date();
 
-        self.countries = [];
+        self.meta = metaService;
 
         self.day = today.getDate();
         self.month = months[today.getMonth()];
@@ -19,31 +27,8 @@ var component = {
         self.errors = {};
 
 
-    	$http.get('https://restcountries.eu/rest/v2/all')
-	        .then(r => {
-	            self.countries = r.data.map(c => {
-	            	return {
-	            		code: c.alpha2Code,
-	            		name: c.name
-	            	};
-	            });
-	        });
+    	
 /* internal functions */
-        function calculateAge(d) {
-            debugger;
-            var ageDifMs = Date.now() - new Date(d).getTime();
-            var ageDate = new Date(ageDifMs);
-            return Math.abs(ageDate.getUTCFullYear() - 1970);
-        }
-
-        function padZeros(d) {
-            if (parseInt(d) >= 10) {
-                return d;
-            }
-
-            return '0' + String(d);
-        }
-
         function isValid() {
             var v = true;
             self.errors = {};
@@ -78,12 +63,14 @@ var component = {
         function loadInitial() {
             self.data = getDefaultData();
 
-            var users = localStorage.getItem('users');
-            if (!users) {
-                return;
-            }
+            if (authKey === '1234') {
+                var users = localStorage.getItem('users');
+                if (!users) {
+                    return;
+                }
 
-            self.allInsertedData = JSON.parse(users);
+                self.allInsertedData = JSON.parse(users);
+            }
         }
 
         function saveToStorage(d) {
@@ -110,9 +97,9 @@ var component = {
     		var last = {};
 
     		if (self.data && self.data.dob) {
-                self.data.age = calculateAge(self.data.dob);
+                self.data.age = helperService.calculateAge(self.data.dob);
 
-				self.data.dob = padZeros(self.data.dob.getMonth() + 1) + '/' + padZeros(self.data.dob.getDate()) + '/' + self.data.dob.getFullYear();
+				self.data.dob = helperService.padZeros(self.data.dob.getMonth() + 1) + '/' + helperService.padZeros(self.data.dob.getDate()) + '/' + self.data.dob.getFullYear();
     		}
 
     		angular.copy(self.data, last);

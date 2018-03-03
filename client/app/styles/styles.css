@@ -84,3 +84,8 @@ footer {
   border-color: red !important;
   color: red !important;
 }
+.note {
+  color: black;
+  font-size: 14px;
+  font-weight: bolder;
+}

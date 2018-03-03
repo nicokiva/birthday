@@ -3,10 +3,12 @@
 	<head>
 		<script src="node_modules/angular/angular.js"></script>
 		<script src="node_modules/angular-route/angular-route.min.js"></script>
-		<script src="node_modules/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+
 		<script src="node_modules/angular-translate/dist/angular-translate.js"></script>
 		<script src="app/app.js"></script>
 
+		<script src="app/services/metaService.js"></script>
+		<script src="app/services/helperService.js"></script>
 		<script src="app/components/birthdayComponent.js"></script>
 
 		<link rel="stylesheet" type="text/css" href="app/styles/styles.css">
@@ -16,7 +18,7 @@
 	<body ng-app="app">
 		<header>Intive - FDV Excercise</header>
 
-		<birthday-component></birthday-component>
+		<div ng-view></div>
 
 		<footer>Nicolás Gabriel Kivatinetz</footer>
 	</body>
