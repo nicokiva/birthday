@@ -13,13 +13,17 @@ var component = {
             authKey = $routeParams.authKey;
         }
 
-        var months = ['January', 'February', 'March', 'April', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        var months = { 
+            en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            es: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Deciembre'],
+            pr: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+        };
         var today = new Date();
 
         self.meta = metaService;
 
         self.day = today.getDate();
-        self.month = months[today.getMonth()];
+        self.month = months[$routeParams.lang][today.getMonth()];
 
         self.lastInsertedData = {};
         self.allInsertedData = [];
