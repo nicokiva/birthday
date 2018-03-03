@@ -1,8 +1,10 @@
+require('dotenv').load();
+
 var path = require('path');
 
 var express = require('express'),
   app = express(),
-  port = 3000;
+  port = process.env.PORT || 3000;
 
 app.use('/client', express.static(path.join(__dirname + '/client')));
 
